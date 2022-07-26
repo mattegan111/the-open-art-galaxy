@@ -43,6 +43,14 @@ Array(50).fill().forEach(addStar);
 
 const raycaster = new THREE.Raycaster();
 let pointer = new THREE.Vector2();
+let INTERSECTED;
+
+document.addEventListener('click', onMouseClick);
+
+function onMouseClick() {
+  const intersects = raycaster.intersectObjects( scene.children, false );
+  console.log(intersects[0].object);
+}
 
 document.addEventListener( 'mousemove', onPointerMove );
 
@@ -51,7 +59,6 @@ function onPointerMove( event ) {
   pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 }
 
-let INTERSECTED;
 
 function animate() {
   raycaster.setFromCamera( pointer, camera );
