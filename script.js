@@ -24,10 +24,10 @@ scene.add(pointLight, ambientLight);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
-const geometryStar = new THREE.SphereGeometry((Math.random()), 24, 24);
-const materialStar = new THREE.MeshStandardMaterial({color: 0xffffff});
 
 function addStar(){
+    const geometryStar = new THREE.SphereGeometry((Math.random()), 24, 24);
+    const materialStar = new THREE.MeshStandardMaterial({color: 0xffffff});
     const meshStar = new THREE.Mesh(geometryStar, materialStar);
     
     const [x, y, z] = Array(3)
@@ -35,12 +35,42 @@ function addStar(){
     .map(() => THREE.MathUtils.randFloatSpread(50));
     
     meshStar.position.set(x, y, z);
+    console.log(meshStar);
     scene.add(meshStar);
 }
 
 Array(50).fill().forEach(addStar);
 
+const raycaster = new THREE.Raycaster();
+let pointer = new THREE.Vector2();
+
+document.addEventListener( 'mousemove', onPointerMove );
+
+function onPointerMove( event ) {
+  pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+  pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+}
+
+let INTERSECTED;
+
 function animate() {
+  raycaster.setFromCamera( pointer, camera );
+  const intersects = raycaster.intersectObjects( scene.children, false );
+
+  if ( intersects.length > 0 ) {
+    if ( INTERSECTED != intersects[ 0 ].object ) {
+      if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+
+      INTERSECTED = intersects[ 0 ].object;
+      INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+      INTERSECTED.material.emissive.setHex( 0xff0000 );
+    }
+  } else {
+    if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+
+    INTERSECTED = null;
+  }
+
   requestAnimationFrame(animate);
   controls.update();
   renderer.render(scene, camera);
