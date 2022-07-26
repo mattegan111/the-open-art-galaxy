@@ -59,7 +59,6 @@ function onPointerMove( event ) {
   pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 }
 
-
 function animate() {
   raycaster.setFromCamera( pointer, camera );
   const intersects = raycaster.intersectObjects( scene.children, false );
