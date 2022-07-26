@@ -1,5 +1,5 @@
 # the-open-art-galaxy
-A 3D universe where contributors determine the functionality of one of many randomly generated worlds
+A 3D galaxy where contributors determine the functionality of one of many generated planets
 
 ## What's the User Experience like?
 A 3D rendered environment with lots of 'planets'. You can click on a planet and a 2d background will be rendered, over which a unique planet environment will appear.
