@@ -38,14 +38,16 @@ function addStar(planetName){
     console.log(planetName);
     const geometryStar = new THREE.SphereGeometry((Math.random()), 24, 24);
     const materialStar = new THREE.MeshStandardMaterial({color: 0xffffff});
-    const meshStar = new THREE.Mesh(geometryStar, materialStar);
+    let meshStar = new THREE.Mesh(geometryStar, materialStar);
+
+    meshStar.name = planetName;
     
     const [x, y, z] = Array(3)
     .fill()
     .map(() => THREE.MathUtils.randFloatSpread(50));
     
     meshStar.position.set(x, y, z);
-    // console.log(meshStar);
+    console.log(meshStar);
     scene.add(meshStar);
 }
 
@@ -61,7 +63,7 @@ document.addEventListener('click', onMouseClick);
 
 function onMouseClick() {
   const intersects = raycaster.intersectObjects( scene.children, false );
-  // console.log(intersects[0].object);
+  window.location = `./planets/${intersects[0].object.name}/index.html`;
 }
 
 document.addEventListener( 'mousemove', onPointerMove );
