@@ -29,9 +29,12 @@ const controls = new OrbitControls(camera, renderer.domElement);
 // get dir of planets (dev contributions)
 
 async function getRepoDirData() {
-  const res = await fetch('https://api.github.com/repos/mattegan111/the-open-art-galaxy/git/trees/4b44901e29a6ebf3849d0d86ec1df787db6a89c7');
-  let data = await res.json();
-  return data;
+  const mainRes = await fetch('https://api.github.com/repos/mattegan111/the-open-art-galaxy/git/trees/main');
+  const mainData = await mainRes.json();
+  const planetsDirTreeSha = mainData.tree.find(x => x.path == 'planets').sha;
+  const planetsRes = await fetch(`https://api.github.com/repos/mattegan111/the-open-art-galaxy/git/trees/${planetsDirTreeSha}`);
+  const planetsData = await planetsRes.json();
+  return planetsData;
 }
 
 const repoDirData = await getRepoDirData();
