@@ -24,8 +24,18 @@ scene.add(pointLight, ambientLight);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
+// get dir of planets (dev contributions)
 
-function addStar(){
+async function getRepoDirData() {
+  const res = await fetch('https://api.github.com/repos/mattegan111/the-open-art-galaxy/git/trees/4b44901e29a6ebf3849d0d86ec1df787db6a89c7');
+  let data = await res.json();
+  return data;
+}
+
+const repoDirData = await getRepoDirData();
+
+function addStar(planetName){
+    console.log(planetName);
     const geometryStar = new THREE.SphereGeometry((Math.random()), 24, 24);
     const materialStar = new THREE.MeshStandardMaterial({color: 0xffffff});
     const meshStar = new THREE.Mesh(geometryStar, materialStar);
@@ -35,11 +45,13 @@ function addStar(){
     .map(() => THREE.MathUtils.randFloatSpread(50));
     
     meshStar.position.set(x, y, z);
-    console.log(meshStar);
+    // console.log(meshStar);
     scene.add(meshStar);
 }
 
-Array(50).fill().forEach(addStar);
+repoDirData.tree.forEach(tree => {
+  addStar(tree.path)
+});
 
 const raycaster = new THREE.Raycaster();
 let pointer = new THREE.Vector2();
@@ -49,7 +61,7 @@ document.addEventListener('click', onMouseClick);
 
 function onMouseClick() {
   const intersects = raycaster.intersectObjects( scene.children, false );
-  console.log(intersects[0].object);
+  // console.log(intersects[0].object);
 }
 
 document.addEventListener( 'mousemove', onPointerMove );
