@@ -14,7 +14,7 @@ A 3D rendered environment with lots of 'planets'. You can click on a planet and 
 4. Save, commit, push and make a pull request.
   4.1 If you'd like some (friendly and constructive) feedback on your code, please ask.
 5. Once your contribution is merged and github pages updates, your planet will be available.
-6. URL to view the live project will be posted here shortly
+6. View the live project at https://mattegan111.github.io/the-open-art-galaxy/
 
 ## Contact
 ### Can I talk to a human pls?
