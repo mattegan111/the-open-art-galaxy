@@ -11,7 +11,7 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
+camera.position.setZ(20);
 
 renderer.render(scene, camera);
 
@@ -34,20 +34,25 @@ async function getRepoDirData() {
 
 const repoDirData = await getRepoDirData();
 
+let x = 0;
+let y = 0;
+let z = 0;
 function addStar(planetName){
-    console.log(planetName);
     const geometryStar = new THREE.SphereGeometry((Math.random()), 24, 24);
     const materialStar = new THREE.MeshStandardMaterial({color: 0xffffff});
     let meshStar = new THREE.Mesh(geometryStar, materialStar);
 
     meshStar.name = planetName;
     
-    const [x, y, z] = Array(3)
+    const [xEdit, yEdit, zEdit] = Array(3)
     .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(50));
-    
+    .map(() => THREE.MathUtils.randFloatSpread(3));
+
+    x = x + xEdit;
+    y = y + 3 + yEdit;
+    z = z - 3 + zEdit;
+
     meshStar.position.set(x, y, z);
-    console.log(meshStar);
     scene.add(meshStar);
 }
 
