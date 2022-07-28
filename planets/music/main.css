@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+div {
+  display: inline-block;
+  width: 50vw;
+  height: 50vh;
+}
+
+.div1 { 
+  float: right;
+}
+
+.div2 {  
+  float: right;
+}
+
+img {
+  width: 50vw;
+  height: 50vh;
+}
