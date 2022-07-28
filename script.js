@@ -53,12 +53,16 @@ async function addStar(planetName){
     const singlePlanetDirRes = await fetch(`https://api.github.com/repos/mattegan111/the-open-art-galaxy/git/trees/${singlePlanetDirSha}`);
     const singlePlanetDirData = await singlePlanetDirRes.json();
 
-    const planetImage = singlePlanetDirData.tree.find(x => x.path == 'planetwrapper.jpg');
+    const planetImageJpg = singlePlanetDirData.tree.find(x => x.path == 'planetwrapper.jpg');
+    const planetImagePng = singlePlanetDirData.tree.find(x => x.path == 'planetwrapper.png');
     
     let materialStar;
 
-    if(planetImage != null){
+    if(planetImageJpg != null){
       const moonTexture = new THREE.TextureLoader().load(`./planets/${planetName}/planetwrapper.jpg`);
+      materialStar = new THREE.MeshStandardMaterial({map: moonTexture});
+    } else if(planetImagePng != null) {
+      const moonTexture = new THREE.TextureLoader().load(`./planets/${planetName}/planetwrapper.png`);
       materialStar = new THREE.MeshStandardMaterial({map: moonTexture});
     } else {
       materialStar = new THREE.MeshStandardMaterial({color: 0xffffff});
