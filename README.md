@@ -29,4 +29,5 @@ Email: himatthewegan@gmail.com
 3. Animations and scene layout so that planets are organised into orbits.  
 4. Animations so the user feels like they're 'entering' the planet  
 5. A user 'inventory' to make the experience more like a game, potentially with pre-made functions that contributors can use to read and set user inventory data - perhaps using local storage.  
+6. Organise planets in the galaxy in an orbit formation.  
 
