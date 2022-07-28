@@ -5,7 +5,8 @@ A 3D galaxy where contributors determine the functionality of one of many genera
 A 3D rendered environment with lots of 'planets'. You can click on a planet and a 2d world, creating by one of many contributors, will be rendered.
 
 ## How Do I Contribute as a Developer?
-0. Pull this repo and create your own local branch
+Contributing a planet of your own can take as little as 1 hour, read the steps below.
+0. Clone this repo and create your own local branch
 1. Create an HTML, CSS and JS file. This is your 'world'.
   1.1 At least one html named "index" is required
   1.2 Link styles and scripts into the html using relative paths. e.g. "./styles.css"
