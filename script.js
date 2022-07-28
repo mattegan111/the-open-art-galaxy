@@ -54,11 +54,12 @@ async function addStar(planetName){
     const singlePlanetDirData = await singlePlanetDirRes.json();
 
     const planetImage = singlePlanetDirData.tree.find(x => x.path == 'planetwrapper.jpg');
-
+    
     let materialStar;
 
     if(planetImage != null){
-      materialStar = new THREE.MeshStandardMaterial({map: `./planets/${planetName}/planetwrapper.jpg`});
+      const moonTexture = new THREE.TextureLoader().load(`./planets/${planetName}/planetwrapper.jpg`);
+      materialStar = new THREE.MeshStandardMaterial({map: moonTexture});
     } else {
       materialStar = new THREE.MeshStandardMaterial({color: 0xffffff});
     }
