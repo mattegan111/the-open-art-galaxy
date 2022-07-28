@@ -6,13 +6,12 @@ A 3D rendered environment with lots of 'planets'. You can click on a planet and 
 
 ## How Do I Contribute as a Developer?
 Contributing a planet of your own can take as little as 1 hour, even for a newbie programmer. Read the steps below.  
-0. Clone this repo and create your own local branch
-1. Create an HTML, CSS and JS file. This is your 'planet'.  
-  1.0 Optional: To determine what your planet looks like in the 3D galaxy, include a jpg or png image that is named 'planetwrapper' and has 1024x512 dimensions.
-  1.1 At least one html named "index" is required
-  1.2 Link styles and scripts into the html using relative paths. e.g. "./styles.css"  
-2. Put these files in a folder. That folders name will be used as the name of your planet.
-3. Save that folder in the existing folder named "planets".
+1. Clone this repo and create your own local branch
+2. In the "planets" folder, create a new folder. Name this folder as you please - it will be used to determine the name of your planet when rendered in the Galaxy.  
+3. In your new folder, create an HTML, CSS and JS file. This is what users see when they visit your 'planet'.  
+  3.0 Optional: To determine what your planet looks like in the 3D galaxy, add a jpg or png image that is named 'planetwrapper' and has 1024x512 dimensions.  
+  3.1 At least one html named "index" is required  
+  3.2 Link styles and scripts into the html using relative paths. e.g. "./styles.css"  
 4. Save, commit, push and make a pull request.  
   4.1 If you'd like some (friendly and constructive) feedback on your code, please ask.  
 5. Once your contribution is merged and github pages propagates, your planet will be available.
