@@ -45,7 +45,9 @@ async function getRepoDirData() {
 
 const planetsDirData = await getRepoDirData();
 
-let x = 0;
+// Add stars
+
+let x = -14;
 let y = 0;
 let z = 0;
 async function addStar(planetName){
@@ -68,18 +70,18 @@ async function addStar(planetName){
       materialStar = new THREE.MeshStandardMaterial({color: 0xffffff});
     }
 
-    const geometryStar = new THREE.SphereGeometry((Math.random()), 24, 24);
+    const geometryStar = new THREE.SphereGeometry(0.5, 24, 24);
     let meshStar = new THREE.Mesh(geometryStar, materialStar);
 
     meshStar.name = planetName;
     
     const [xEdit, yEdit, zEdit] = Array(3)
     .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(3));
+    .map(() => THREE.MathUtils.randFloatSpread(0.25));
 
-    x = x + xEdit;
-    y = y + 3 + yEdit;
-    z = z - 3 + zEdit;
+    x = x + 2 + xEdit;
+    y = y;
+    z = z;
 
     meshStar.position.set(x, y, z);
     scene.add(meshStar);
