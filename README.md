@@ -25,7 +25,7 @@ Email: himatthewegan@gmail.com
 
 ## Feature Release Roadmap
 ~~1. Ability for contributors to provide a texture for their planet~~  
-2. Better controls for user navigation of galaxy  
+~~2. Better controls for user navigation of galaxy~~  
 3. Animations and scene layout so that planets are organised into orbits.  
 4. Animations so the user feels like they're 'entering' the planet  
 5. A user 'inventory' to make the experience more like a game, potentially with pre-made functions that contributors can use to read and set user inventory data - perhaps using local storage.  
