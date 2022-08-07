@@ -120,10 +120,11 @@ function animate() {
       INTERSECTED = intersects[ 0 ].object;
       INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
       INTERSECTED.material.emissive.setHex( 0xff0000 );
+      document.body.classList.add('pointer')
     }
   } else {
     if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-
+    document.body.classList.remove('pointer')
     INTERSECTED = null;
   }
 
